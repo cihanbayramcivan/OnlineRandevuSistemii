@@ -1,0 +1,38 @@
+﻿<h2 class="text-center mt-4">Admin Paneli</h2>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <!-- Kullanıcı Yönetimi -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-people-fill display-4 text-primary"></i>
+                    <h5 class="card-title mt-3">Kullanıcı Yönetimi</h5>
+                    <p class="card-text">Kullanıcıları yönetin, rollerini güncelleyin veya yeni kullanıcılar ekleyin.</p>
+                    <a asp-action="ManageUsers" class="btn btn-primary">Yönet</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Randevu Yönetimi -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-calendar-check-fill display-4 text-success"></i>
+                    <h5 class="card-title mt-3">Randevu Yönetimi</h5>
+                    <p class="card-text">Sistemdeki tüm randevuları görüntüleyin ve durumlarını güncelleyin.</p>
+                    <a asp-action="ManageAppointments" class="btn btn-success">Yönet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hesabı Kapat Butonu -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4 text-center">
+            <a asp-action="Logout" class="btn btn-danger">
+                <i class="bi bi-box-arrow-right"></i> Çıkış Yap
+            </a>
+        </div>
+    </div>
+</div>

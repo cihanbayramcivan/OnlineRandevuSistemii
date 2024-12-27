@@ -1,0 +1,48 @@
+﻿@model List<Appointment>
+
+<h2 class="text-center mt-4">Randevu Yönetimi</h2>
+
+<div class="container mt-5">
+    <!-- Index.cshtml'e yönlendiren buton -->
+    <div class="d-flex justify-content-end mb-3">
+        <a asp-action="Index" class="btn btn-secondary btn-sm">
+            <i class="bi bi-arrow-left-circle"></i> Ana Sayfaya Dön
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover shadow-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Kullanıcı</th>
+                    <th>Hizmet</th>
+                    <th>Durum</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var appointment in Model)
+                {
+                    <tr>
+                        <td>@appointment.User?.Username</td>
+                        <td>@appointment.Service?.Name</td>
+                        <td>
+                            <span class="badge
+                                @(appointment.Status == OnlineRandevuSistemi.Enums.AppointmentStatus.Onaylandı ? "bg-success" :
+                                  appointment.Status == OnlineRandevuSistemi.Enums.AppointmentStatus.İptalEdildi ? "bg-danger" :
+                                  appointment.Status == OnlineRandevuSistemi.Enums.AppointmentStatus.Tamamlandı ? "bg-primary" :
+                                  "bg-secondary")">
+                                @appointment.Status.ToString()
+                            </span>
+                        </td>
+                        <td>
+                            <a asp-action="UpdateAppointmentStatus" asp-route-id="@appointment.Id" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil-square"></i> Güncelle
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

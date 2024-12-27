@@ -1,0 +1,54 @@
+﻿<h2>Randevularım</h2>
+
+<!-- Yeni Randevu Ekle Düğmesi -->
+<div class="mb-3 d-flex justify-content-between">
+    <a asp-action="Create" class="btn btn-success">Yeni Randevu Ekle</a>
+    <!-- Hesabı Kapat Butonu -->
+    <a asp-action="Logout" class="btn btn-danger">
+        <i class="bi bi-box-arrow-right"></i> Çıkış Yap
+    </a>
+</div>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Hizmet</th>
+            <th>Tarih</th>
+            <th>İşlemler</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>
+                    @if (appointment.Service != null)
+                    {
+                        @appointment.Service.Name
+                    }
+                    else
+                    {
+                        <span class="text-danger">Hizmet bilgisi yok</span>
+                    }
+                </td>
+                <td>@appointment.AppointmentDate.ToString("dd.MM.yyyy")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@appointment.Id" class="btn btn-warning btn-sm">Düzenle</a>
+                    <form asp-action="Delete" asp-route-id="@appointment.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                    </form>
+                </td>
+                <td>
+                    <span class="badge
+                        @(appointment.Status == OnlineRandevuSistemi.Enums.AppointmentStatus.Onaylandı ? "bg-success" :
+                                  appointment.Status == OnlineRandevuSistemi.Enums.AppointmentStatus.İptalEdildi ? "bg-danger" :
+                                  appointment.Status == OnlineRandevuSistemi.Enums.AppointmentStatus.Tamamlandı ? "bg-primary" :
+                                  "bg-secondary")">
+                        @appointment.Status.ToString()
+                    </span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Hoş Geldiniz";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white text-center">
+            <h1 class="display-4">Online Randevu Sistemi</h1>
+        </div>
+        <div class="card-body text-center">
+            <p class="lead">
+                Sistemimize hoş geldiniz! Randevularınızı kolayca oluşturabilir, yönetebilir ve takip edebilirsiniz.
+            </p>
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <a asp-controller="Account" asp-action="Login" class="btn btn-secondary btn-lg">
+                    <i class="bi bi-box-arrow-in-right"></i> Giriş Yap
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

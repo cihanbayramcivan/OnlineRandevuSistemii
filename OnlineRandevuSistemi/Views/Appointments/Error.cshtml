@@ -1,0 +1,36 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+    var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+@if (Model?.ShowRequestId ?? false)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+@if (environment == "Development")
+{
+    <h3 class="text-warning">Development Mode - Detailed Error Information</h3>
+    <p>The following error occurred:</p>
+    <pre class="bg-light text-dark p-3">
+    <strong>Message:</strong> @Model?.ErrorMessage
+    <strong>Exception Message:</strong> @Model?.Exception?.Message
+    <strong>Stack Trace:</strong>
+        @Model?.Exception?.StackTrace
+        </pre>
+}
+else
+{
+    <h3 class="text-info">An unexpected error occurred</h3>
+    <p>We apologize for the inconvenience. Please try again later or contact support if the issue persists.</p>
+}
+
+<p>
+    <a href="/" class="btn btn-primary">Go to Homepage</a>
+</p>

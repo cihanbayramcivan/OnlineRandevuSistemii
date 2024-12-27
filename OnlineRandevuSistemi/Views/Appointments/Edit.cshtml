@@ -1,0 +1,30 @@
+﻿@model Appointment
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Randevu Düzenle</h2>
+    <form asp-action="Edit" method="post" class="shadow p-4 rounded bg-light">
+        <!-- ID Hidden Field -->
+        <input type="hidden" asp-for="Id" />
+
+        <!-- Hizmet Seçimi -->
+        <div class="mb-3">
+            <label asp-for="ServiceId" class="form-label">Hizmet Seçin:</label>
+            <select asp-for="ServiceId" asp-items="@(new SelectList(ViewBag.Services, "Id", "Name"))" class="form-select">
+                <option value="">Hizmet Seçin</option>
+            </select>
+        </div>
+
+        <!-- Tarih Seçimi -->
+        <div class="mb-3">
+            <label asp-for="AppointmentDate" class="form-label">Randevu Tarihi:</label>
+            <input type="date" asp-for="AppointmentDate" class="form-control" />
+        </div>
+
+        <!-- Güncelle Butonu -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg px-4">
+                <i class="bi bi-save"></i> Güncelle
+            </button>
+        </div>
+    </form>
+</div>
